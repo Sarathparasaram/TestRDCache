@@ -20,6 +20,8 @@ namespace TestRDCache
 
             builder.Services.AddDbContext<AdventureWorksDbContext>(actions => actions.UseSqlServer(configuration.GetConnectionString("ConnectionStrings")));
             builder.Services.AddStackExchangeRedisCache(options => { options.Configuration = configuration["RedisCacheServerUrl"]; });
+            builder.Services.AddMemoryCache();
+
 
 
             var app = builder.Build();

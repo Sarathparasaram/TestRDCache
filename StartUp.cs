@@ -8,22 +8,7 @@ namespace TestRDCache
 {
     public class StartUp
     {
-        //public void ConfigureServices(IServiceCollection services)
-        //{
-        //    services.AddControllersWithViews();
-        //    var configuration = new ConfigurationBuilder()
-        //       .SetBasePath(Directory.GetCurrentDirectory())
-        //       .AddJsonFile("appsettings.json")
-        //       .Build();
-        //    services.AddSingleton<IConfiguration>(configuration);
-
-
-        //    services.AddDbContext<AdventureWorksDbContext>(options =>
-        //        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-        //}
-
-        //Only When using Redis Cache
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -37,6 +22,9 @@ namespace TestRDCache
 
             services.AddDbContext<AdventureWorksDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddMemoryCache();
+
 
             services.AddStackExchangeRedisCache(options =>
             {
